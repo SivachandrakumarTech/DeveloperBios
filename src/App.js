@@ -5,6 +5,7 @@ import React from 'react'
 import Home from './Home';
 import Navbar from './Navbar';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DeveloperBios from './DeveloperBios';
 
 class App extends React.Component {
   constructor(props){
@@ -32,7 +33,7 @@ componentDidMount(){
     <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/DisplayBios" element={<DisplayBios developers = {this.state.developers}/>}/>  
-        <Route path="/AddDeveloper" element={<AddDeveloper/>}/>       
+        <Route path="/AddDeveloper" element={<AddDeveloper/>}/>                
        </Routes>
        </div>
     </Router>                

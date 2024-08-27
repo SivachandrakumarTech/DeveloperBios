@@ -1,44 +1,36 @@
 import React from 'react'
 import  {useState} from 'react'
 import Developer from './Developer'
+import { useNavigate } from 'react-router-dom';
 
-function AddDeveloper(props){
-
+function AddDeveloper(props){    
     const[firstName, setFirstName] =  useState('');
     const[lastName, setLasteName] =  useState('');
     const[favoriteLanguage, setfavoriteLanguage] =  useState('');
     const[yearStarted, setyearStarted] =  useState('');    
+    const navigate = useNavigate();
 
-    
-   const addDeveloper = () => {
-    let newDev = new Developer(null, firstName, lastName, favoriteLanguage, yearStarted)
-    //API Call
+
+   const handleSubmit = (event) => {
+    event.preventDefault();  
+    let newDev = new Developer(null, firstName, lastName, favoriteLanguage, yearStarted);
     fetch('https://dev-bios-api-dot-cog01hprmn542jqme4w772bk1dxpr.uc.r.appspot.com/developers/add', {
     method: 'POST', 
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify(newDev),
+    body: JSON.stringify(newDev)
     }) 
-    .then(()=> clearForm())
+    .then(() => navigate('/DisplayBios'))
     .catch(err => console.log(err));
    }
-
-
-   const clearForm = () => {
-    setFirstName('');
-    setLasteName('');
-    setfavoriteLanguage('');
-    setyearStarted('');
-    document.getElementById("devForm").reset();
-}
 
   return (
     <div className="container">
             <h1> ADD Developer Bio</h1>
             <div className="row">
                 <div className="col-mid-6">
-                    <form id="devForm" onSubmit={addDeveloper}>
+                    <form id="devForm" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="firstName">First Name</label>
                             <input type="text" data-testid="firstName" name="firstName"  className="form-control" onChange={(e) => setFirstName(e.target.value)} />
