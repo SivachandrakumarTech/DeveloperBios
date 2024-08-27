@@ -1,5 +1,4 @@
 import './App.css';
-import Developer from './Developer'
 import DisplayBios from './DisplayBios';
 import AddDeveloper from './AddDeveloper';
 import React from 'react'
