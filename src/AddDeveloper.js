@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import  {useState} from 'react'
 import Developer from './Developer'
 import { useNavigate } from 'react-router-dom';
 
-function AddDeveloper(props){    
+
+function AddDeveloper(){    
     const[firstName, setFirstName] =  useState('');
     const[lastName, setLasteName] =  useState('');
-    const[favoriteLanguage, setfavoriteLanguage] =  useState('');
-    const[yearStarted, setyearStarted] =  useState('');    
+    const[favoriteLanguage, setFavoriteLanguage] =  useState('');
+    const[yearStarted, setYearStarted] =  useState('');    
+   
+    const[isValidForm,setIsValidForm] = useState(false);
+    const[isDirtyForm,setIsDirtyForm] = useState(false);
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+        let firstNameValid = firstName ? true: false;
+        let lastNameValid = lastName ? true: false;        
+        let favoriteLanguageValid = favoriteLanguage ? true: false;        
+        let yearStartedValid = yearStarted ? true: false;
+
+        setIsValidForm(firstNameValid && lastNameValid && favoriteLanguageValid && yearStartedValid);
+        setIsDirtyForm(firstName || lastName ||favoriteLanguage || yearStarted);
+
+    }, [firstName, lastName, favoriteLanguage, yearStarted]);
 
 
    const handleSubmit = (event) => {
@@ -41,20 +58,29 @@ function AddDeveloper(props){
                         </div>
                         <div className="form-group">
                             <label htmlFor="favoriteLanguage">Favorite Language</label>
-                            <input type="text" data-testid="favoriteLanguage" name="favoriteLanguage"  className="form-control" onChange={(e) => setfavoriteLanguage(e.target.value)} />
+                            <input type="text" data-testid="favoriteLanguage" name="favoriteLanguage"  className="form-control" onChange={(e) => setFavoriteLanguage(e.target.value)} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="yearStarted">Year Started</label>
-                            <input type="text" data-testid="yearStarted" name="yearStarted"  className="form-control" onChange={(e) => setyearStarted(e.target.value)}/>
+                            <input type="text" data-testid="yearStarted" name="yearStarted"  className="form-control" onChange={(e) => setYearStarted(e.target.value)}/>
                         </div>
                         <div className="form-group">
-                            <button type="submit"  className="btn btn-success" >Submit</button>
+                            <button type="submit"  className="btn btn-success" disabled={!isValidForm} >Submit</button>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>        
+                { 
+                    (!isValidForm && isDirtyForm)
+                    ?
+                    <div style={{fontSize: '12px', color: 'red'}}>
+                        All Fields must be valid with Values
+                    </div>
+                    :
+                    <div></div>
+                }                       
         </div>
-  )
+  );
 
 }
 

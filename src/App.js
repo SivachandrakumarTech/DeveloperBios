@@ -5,7 +5,6 @@ import React from 'react'
 import Home from './Home';
 import Navbar from './Navbar';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import DeveloperBios from './DeveloperBios';
 
 class App extends React.Component {
   constructor(props){
