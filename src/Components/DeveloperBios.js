@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTyes from 'prop-types'
-import Developer from './Developer'
+import Developer from '../Model/Developer'
 
 
 function DeveloperBios(props) {

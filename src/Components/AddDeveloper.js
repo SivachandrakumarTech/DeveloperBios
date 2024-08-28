@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import  {useState} from 'react'
-import Developer from './Developer'
+import Developer from '../Model/Developer'
 import { useNavigate } from 'react-router-dom';
 
 
