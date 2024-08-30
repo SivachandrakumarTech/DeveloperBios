@@ -6,10 +6,10 @@ function Home () {
   return (
     (
         <div className="Home">
-        <header className="Home-header">
+        <p>React</p>
+        <header className="Home-header">         
           <img src={logo} className="Home-logo" alt="logo" />                       
-        </header>
-        <p>Siva</p>
+        </header>       
       </div>
       )
   );

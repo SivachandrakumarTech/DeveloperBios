@@ -13,11 +13,12 @@ function App() {
 
   const{isLoggedIn} = useContext(AuthContext)
   
-    return (                     
+    return (   
+                        
     <Router> 
       <div>  
       <Navbar/>       
-    <Routes>
+    <Routes>    
         <Route path="/" element={<Home />}/>
         <Route path="/DisplayBios" element={<DisplayBios/>}/>    
         {
@@ -30,8 +31,8 @@ function App() {
         <Route path='/login' element={<Login/>}/>              
        </Routes>
        </div>
-       <p>Sivachandrakumar</p>
-    </Router>                
+       
+    </Router>    
     );
 }
 
