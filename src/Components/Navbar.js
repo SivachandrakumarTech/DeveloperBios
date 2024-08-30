@@ -8,7 +8,7 @@ function Navbar() {
   const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
 
 
-  return (
+  return ( 
     <div>   
         <nav>
             <ul>
@@ -36,7 +36,7 @@ function Navbar() {
             }            
             </ul>            
         </nav>
-   </div>
+    </div>  
   )
 }
 

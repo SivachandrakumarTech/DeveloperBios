@@ -9,6 +9,7 @@ function Home () {
         <header className="Home-header">
           <img src={logo} className="Home-logo" alt="logo" />                       
         </header>
+        <p>Siva</p>
       </div>
       )
   );
